@@ -7,10 +7,18 @@
   --light-blue: #455ea0;
   --dark-blue: #1a1e2b;
   --orange: #ef421c;
-
+  /*
   --primary: var(--light-blue);
   --secondary: var(--dark-blue);
   --accent: var(--orange);
+  */
+
+  --text: #e6e5f0;
+  --background: #040316;
+  --primary: #002a80;
+  --secondary: #d01127;
+  --accent: #fbd218;
+
 }
 
 * {
