@@ -19,6 +19,234 @@
     
   </head>
 
+<style>
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+button {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  outline: none;
+}
+
+a {
+  color: inherit;
+}
+
+body {
+  font: normal 16px/1.5 "Helvetica Neue", sans-serif;
+  background: #456990;
+  color: #fff;
+}
+
+.section {
+  background: #f45b69;
+  padding: 50px 0;
+}
+
+.section .container {
+  width: 90%;
+  max-width: 1200px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.section h1 {
+  font-size: 2.5rem;
+}
+
+.section h2 {
+  font-size: 1.3rem;
+}
+
+.timeline {
+  white-space: nowrap;
+  overflow-x: hidden;
+}
+
+.timeline ol {
+  font-size: 0;
+  width: 100vw;
+  padding: 250px 0;
+  transition: all 1s;
+}
+
+.timeline ol li {
+  position: relative;
+  display: inline-block;
+  list-style-type: none;
+  width: 160px;
+  height: 3px;
+  background: #fff;
+}
+
+.timeline ol li:last-child {
+  width: 280px;
+}
+
+.timeline ol li:not(:first-child) {
+  margin-left: 14px;
+}
+
+.timeline ol li:not(:last-child)::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: calc(100% + 1px);
+  bottom: 0;
+  width: 12px;
+  height: 12px;
+  transform: translateY(-50%);
+  border-radius: 50%;
+  background: #f45b69;
+}
+
+.timeline ol li div {
+  position: absolute;
+  left: calc(100% + 7px);
+  width: 280px;
+  padding: 15px;
+  font-size: 1rem;
+  white-space: normal;
+  color: black;
+  background: white;
+}
+
+.timeline ol li div::before {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 0;
+  height: 0;
+  border-style: solid;
+}
+
+.timeline ol li:nth-child(odd) div {
+  top: -16px;
+  transform: translateY(-100%);
+}
+
+.timeline ol li:nth-child(odd) div::before {
+  top: 100%;
+  border-width: 8px 8px 0 0;
+  border-color: white transparent transparent transparent;
+}
+
+.timeline ol li:nth-child(even) div {
+  top: calc(100% + 16px);
+}
+
+.timeline ol li:nth-child(even) div::before {
+  top: -8px;
+  border-width: 8px 0 0 8px;
+  border-color: transparent transparent transparent white;
+}
+
+.timeline time {
+  display: block;
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin-bottom: 8px;
+}
+
+.timeline .arrows {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.timeline .arrows .arrow__prev {
+  margin-right: 20px;
+}
+
+.timeline .disabled {
+  opacity: 0.5;
+}
+
+.timeline .arrows img {
+  width: 45px;
+  height: 45px;
+}
+
+@media screen and (max-width: 599px) {
+  .timeline ol,
+  .timeline ol li {
+    width: auto;
+  }
+
+  .timeline ol {
+    padding: 0;
+    transform: none !important;
+  }
+
+  .timeline ol li {
+    display: block;
+    height: auto;
+    background: transparent;
+  }
+
+  .timeline ol li:first-child {
+    margin-top: 25px;
+  }
+
+  .timeline ol li:not(:first-child) {
+    margin-left: auto;
+  }
+
+  .timeline ol li div {
+    position: static;
+    width: 94%;
+    height: auto !important;
+    margin: 0 auto 25px;
+  }
+
+  .timeline ol li:nth-child(odd) div {
+    transform: none;
+  }
+
+  .timeline ol li:nth-child(odd) div::before,
+  .timeline ol li:nth-child(even) div::before {
+    left: 50%;
+    top: 100%;
+    transform: translateX(-50%);
+    border: none;
+    border-left: 1px solid white;
+    height: 25px;
+  }
+
+  .timeline ol li:last-child,
+  .timeline ol li:nth-last-child(2) div::before,
+  .timeline ol li:not(:last-child)::after,
+  .timeline .arrows {
+    display: none;
+  }
+}
+
+.page-footer {
+  position: fixed;
+  right: 0;
+  bottom: 20px;
+  display: flex;
+  align-items: center;
+  padding: 5px;
+  color: black;
+  background: rgba(255, 255, 255, 0.65);
+}
+
+.page-footer a {
+  display: flex;
+  margin-left: 4px;
+}
+
+</style>
+
 
   <body>
     <div class="main_wrapper">
@@ -42,84 +270,89 @@
 <!-- BEGYND AT ÆNDRE HERFRA! IKKE FØR! -->
 
 
+<section class="section intro">
+  <div class="container">
+    <h1>Horizontal Timeline &rarr;</h1>
+    <p>Timeline v2 <a href="https://codepen.io/tutsplus/full/GRYEwXX" target="_blank">here</a></p>
+  </div>
+</section>
 
-      <!-- HER KAN I INTRODUCERE HVAD JERES SIDE HANDLER OM - MERE OVEROVDNET-->
-      <!-- Jeg foreslår at i går op under View og slår Word Wrap til. Det er nemmere at overskue -->
-      <div class="main-content">
-        <!-- TITLE -->
-        <h1 class="main-header">HISTORIE</h1>
-        <!-- SUBTITLE -->
-        <h2 class="sub-header">Hvem er vi?</h2>
-        <div class="main-info">
-          <!-- TEKST -->
-          <p class="main-paragraph">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nuncvehicula vestibulum odio, et finibus risus semper et. Nulla feugiatsed felis non tempus. Praesent at nisl ultrices, rutrum dui sed,semper justo. Donec tempus commodo massa, vel tristique justosodales vel. Duis vitae luctus elit. Curabitur venenatis lacinialorem bibendum sollicitudin. Proin varius, lacus quis volutpatlacinia, ex velit aliquet sem, nec bibendum sem dolor eget quam.Aliquam cursus ipsum felis. Ut mattis ipsum vitae augue porta, aaccumsan sapien condimentum.</p>
-          <!-- BILLEDE -->
-          <img src="" alt="" class="main-img" width="40%"/>
-        </div>
-      </div>
+<section class="timeline">
+    <ol>
+        <li>
+            <div>
+                <time>1934</time> At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium
+            </div>
+        </li>
+        <li>
+            <div>
+                <time>1937</time> Proin quam velit, efficitur vel neque vitae, rhoncus commodo mi. Suspendisse finibus mauris et bibendum molestie. Aenean ex augue, varius et pulvinar in, pretium non nisi.
+            </div>
+        </li>
+        <li>
+            <div>
+                <time>1940</time> Proin iaculis, nibh eget efficitur varius, libero tellus porta dolor, at pulvinar tortor ex eget ligula. Integer eu dapibus arcu, sit amet sollicitudin eros.
+            </div>
+        </li>
+        <li>
+            <div>
+                <time>1943</time> In mattis elit vitae odio posuere, nec maximus massa varius. Suspendisse varius volutpat mattis. Vestibulum id magna est.
+            </div>
+        </li>
+        <li>
+            <div>
+                <time>1946</time> In mattis elit vitae odio posuere, nec maximus massa varius. Suspendisse varius volutpat mattis. Vestibulum id magna est.
+            </div>
+        </li>
+        <li>
+            <div>
+                <time>1956</time> In mattis elit vitae odio posuere, nec maximus massa varius. Suspendisse varius volutpat mattis. Vestibulum id magna est.
+            </div>
+        </li>
+        <li>
+            <div>
+                <time>1957</time> In mattis elit vitae odio posuere, nec maximus massa varius. Suspendisse varius volutpat mattis. Vestibulum id magna est.
+            </div>
+        </li>
+        <li>
+            <div>
+                <time>1967</time> Aenean condimentum odio a bibendum rhoncus. Ut mauris felis, volutpat eget porta faucibus, euismod quis ante.
+            </div>
+        </li>
+        <li>
+            <div>
+                <time>1977</time> Vestibulum porttitor lorem sed pharetra dignissim. Nulla maximus, dui a tristique iaculis, quam dolor convallis enim, non dignissim ligula ipsum a turpis.
+            </div>
+        </li>
+        <li>
+            <div>
+                <time>1985</time> In mattis elit vitae odio posuere, nec maximus massa varius. Suspendisse varius volutpat mattis. Vestibulum id magna est.
+            </div>
+        </li>
+        <li>
+            <div>
+                <time>2000</time> In mattis elit vitae odio posuere, nec maximus massa varius. Suspendisse varius volutpat mattis. Vestibulum id magna est.
+            </div>
+        </li>
+        <li>
+            <div>
+                <time>2005</time> In mattis elit vitae odio posuere, nec maximus massa varius. Suspendisse varius volutpat mattis. Vestibulum id magna est.
+            </div>
+        </li>
+        <li></li>
+    </ol>
 
-      
-
-      <!-- CONTENT PÅ SIDEN -->
-
-      
-      <!-- Hvis i vil have forskellige baggrundsfarver på de forskellige kategorier, skal i bare 
-      ændre div class fra "main-content2" til "main-content3" - i kan skifte imellem dem hver gang  -->
-
-      <!-- HER KAN I GÅ I DYBDEN MED JERES EMNE  -->
-      <div class="main-content2">
-        <!-- SUBTITLE -->
-        <h2 class="sub-header"></h2>
-        <div class="main-info2">
-          <!-- TEKST -->
-          <p class="main-paragraph2">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nuncvehicula vestibulum odio, et finibus risus semper et. Nulla feugiatsed felis non tempus. Praesent at nisl ultrices, rutrum dui sed,semper justo. Donec tempus commodo massa, vel tristique justosodales vel. Duis vitae luctus elit. Curabitur venenatis lacinialorem bibendum sollicitudin. Proin varius, lacus quis volutpatlacinia, ex velit aliquet sem, nec bibendum sem dolor eget quam.Aliquam cursus ipsum felis. Ut mattis ipsum vitae augue porta, aaccumsan sapien condimentum.</p>
-          <!-- BILLEDE -->
-          <img src="" alt="" class="main-img2" width="40%"/>
-        </div>
-      </div>
-
-
-      <div class="main-content3">
-        <!-- SUBTITLE -->
-        <h2 class="sub-header"></h2>
-        <div class="main-info2">
-          <!-- TEKST -->
-          <p class="main-paragraph2">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nuncvehicula vestibulum odio, et finibus risus semper et. Nulla feugiatsed felis non tempus. Praesent at nisl ultrices, rutrum dui sed,semper justo. Donec tempus commodo massa, vel tristique justosodales vel. Duis vitae luctus elit. Curabitur venenatis lacinialorem bibendum sollicitudin. Proin varius, lacus quis volutpatlacinia, ex velit aliquet sem, nec bibendum sem dolor eget quam.Aliquam cursus ipsum felis. Ut mattis ipsum vitae augue porta, aaccumsan sapien condimentum.</p>
-          <!-- BILLEDE -->
-          <img src="" alt="" class="main-img2" width="40%"/>
-        </div>
-      </div>
-
-
-      <div class="main-content2">
-        <!-- SUBTITLE -->
-        <h2 class="sub-header"></h2>
-        <div class="main-info2">
-          <!-- TEKST -->
-          <p class="main-paragraph2">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nuncvehicula vestibulum odio, et finibus risus semper et. Nulla feugiatsed felis non tempus. Praesent at nisl ultrices, rutrum dui sed,semper justo. Donec tempus commodo massa, vel tristique justosodales vel. Duis vitae luctus elit. Curabitur venenatis lacinialorem bibendum sollicitudin. Proin varius, lacus quis volutpatlacinia, ex velit aliquet sem, nec bibendum sem dolor eget quam.Aliquam cursus ipsum felis. Ut mattis ipsum vitae augue porta, aaccumsan sapien condimentum.</p>
-          <!-- BILLEDE -->
-          <img src="" alt="" class="main-img2" width="40%"/>
-        </div>
-      </div>
-
-
-      <div class="main-content3">
-        <!-- SUBTITLE -->
-        <h2 class="sub-header"></h2>
-        <div class="main-info2">
-          <!-- TEKST -->
-          <p class="main-paragraph2">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nuncvehicula vestibulum odio, et finibus risus semper et. Nulla feugiatsed felis non tempus. Praesent at nisl ultrices, rutrum dui sed,semper justo. Donec tempus commodo massa, vel tristique justosodales vel. Duis vitae luctus elit. Curabitur venenatis lacinialorem bibendum sollicitudin. Proin varius, lacus quis volutpatlacinia, ex velit aliquet sem, nec bibendum sem dolor eget quam.Aliquam cursus ipsum felis. Ut mattis ipsum vitae augue porta, aaccumsan sapien condimentum.</p>
-          <!-- BILLEDE -->
-          <img src="" alt="" class="main-img2" width="40%"/>
-        </div>
-      </div>
-
-
+    <div class="arrows">
+        <button class="arrow arrow__prev disabled" disabled>
+            <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/162656/arrow_prev.svg" alt="prev timeline arrow">
+        </button>
+        <button class="arrow arrow__next">
+            <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/162656/arrow_next.svg" alt="next timeline arrow">
+        </button>
+    </div>
+</section>
 
 <!-- I BEHØVER IKKE AT ÆNDRE NOGET I FOOTEREN, MEN I KAN GODT HVIS DET ER -->
-
-
-
       <footer class="footer">
         <hr class="footer-divider" />
         <div class="footer-links-wrapper">
