@@ -1,0 +1,161 @@
+#container {
+  margin: 0px;
+  width: 100%;
+  min-height: 100vh;
+}
+
+#container .sejt-billede {
+  width: 100vw;
+  min-height: 342vh;
+  margin: 0 auto;
+  border-radius: 0px;
+  background-image: url(KOMMUNISMEN/komune-isme.jpg);
+  background-size: cover;
+  background-position: center center;
+  background-attachment: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+@keyframes textAnim {
+  from {
+    opacity: 0;
+    top: 15px;
+  }
+
+  to {
+    opacity: 1;
+    top: 0px;
+  }
+}
+
+.first {
+  animation: textAnim 600ms ease;
+  animation-fill-mode: forwards;
+
+  animation-delay: 400ms;
+}
+
+.second {
+  animation: textAnim 600ms ease;
+  animation-fill-mode: forwards;
+
+  animation-delay: 700ms;
+}
+
+.third {
+  animation: textAnim 800ms ease;
+  animation-fill-mode: forwards;
+
+  animation-delay: 1200ms;
+}
+
+.introduktion h1 span span {
+  position: relative;
+  top: 0;
+  opacity: 0;
+}
+
+#container .introduktion-container {
+  display: flex;
+  width: 100%;
+  height: calc(100vh - 5rem);
+  margin: 0;
+  align-items: center;
+  justify-content: center;
+}
+
+#container .introduktion h1 {
+  text-align: center;
+  font-size: 7em;
+  text-transform: uppercase;
+
+}
+
+#container .introduktion .liv {
+  font-size: 1.22em;
+}
+
+
+span.communist {
+  font-weight: bold;
+  color: var(--romania-red) !important;
+}
+
+#container .introduktion .communism span {
+  color: var(--romania-red);
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  align-items: center;
+  height: 50vh;
+}
+
+.container .bubble {
+  width: 70vw;
+  background-color: var(--secondary);
+  color: var(--background);
+  border-radius: 10px;
+  padding: 20px 40px;
+
+  display: flex;
+  gap: 6em;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.container .bubble .left {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.container .bubble .right {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: 70%;
+  gap: 20px;
+}
+
+.container .bubble .right img,
+.container .bubble img.right {
+  border-radius: 10px;
+}
+
+.container.blue .bubble {
+  background-color: var(--accent);
+}
+
+.container.inverted .bubble {
+  background-color: var(--background);
+}
+
+.container .bubble * {
+  color: var(--text);
+}
+
+.container.blue .bubble * {
+  color: var(--background);
+}
+
+.container.inverted bubble * {
+  color: var(--secondary);
+}
+
+.container .bubble h1 {
+  text-align: left;
+}
+
+.container .bubble p {
+  font-weight: 400;
+  font-size: 1.5rem;
+  text-align: justify;
+  text-justify: inter-word;
+}
