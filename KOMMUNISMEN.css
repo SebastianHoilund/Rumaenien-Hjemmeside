@@ -7,16 +7,15 @@
 #container .sejt-billede {
   width: 100vw;
   min-height: 342vh;
+  height: fit-content;
   margin: 0 auto;
   border-radius: 0px;
-  background-image: url(KOMMUNISMEN/komune-isme.jpg);
   background-size: cover;
   background-position: center center;
   background-attachment: fixed;
   display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-wrap: wrap;
+  flex-direction: column;
+  justify-content: space-evenly;
 }
 
 @keyframes textAnim {
@@ -67,6 +66,10 @@
   justify-content: center;
 }
 
+#container .introduktion-container.small {
+  height: 50vh;
+}
+
 #container .introduktion h1 {
   text-align: center;
   font-size: 7em;
@@ -88,12 +91,21 @@ span.communist {
   color: var(--romania-red);
 }
 
+.container.visible {
+  opacity: 1;
+}
+
+
 .container {
   display: flex;
-  justify-content: center;
+  justify-content: start;
   width: 100%;
   align-items: center;
-  height: 50vh;
+  min-height: 50vh;
+  padding: 0px 8vw;
+
+  opacity: 0;
+  transition: opacity 0.4s cubic-bezier(0.455, 0.03, 0.515, 0.955);
 }
 
 .container .bubble {
@@ -107,6 +119,20 @@ span.communist {
   gap: 6em;
   flex-direction: row;
   justify-content: space-between;
+
+  position: relative;
+  transition: left 0.4s cubic-bezier(0.455, 0.03, 0.515, 0.955), right 0.4s cubic-bezier(0.455, 0.03, 0.515, 0.955);
+
+  left: unset;
+  right: 10px;
+}
+
+.container.visible:nth-child(odd) .bubble {
+  left: 0px;
+}
+
+.container.visible:nth-child(even) .bubble {
+  right: 0px;
 }
 
 .container .bubble .left {
@@ -118,14 +144,23 @@ span.communist {
 
 .container .bubble .right {
   display: flex;
+  align-items: center;
   flex-direction: row;
   flex-wrap: wrap;
   width: 70%;
   gap: 20px;
 }
 
-.container .bubble .right img,
 .container .bubble img.right {
+  border-radius: 10px;
+  paddin: 20px 40px;
+  margin: 20px 20px 20px 00px;
+  /*  box-shadow: 8px 8px 5px #22222288;*/
+}
+
+.container .bubble .right img {
+  max-width: 100%;
+  height: auto;
   border-radius: 10px;
 }
 
@@ -133,8 +168,14 @@ span.communist {
   background-color: var(--accent);
 }
 
-.container.inverted .bubble {
+.container:nth-child(odd) {
+  justify-content: end;
+}
+
+.container:nth-child(odd) .bubble {
   background-color: var(--background);
+  left: 10px;
+  right: unset;
 }
 
 .container .bubble * {
@@ -151,6 +192,10 @@ span.communist {
 
 .container .bubble h1 {
   text-align: left;
+}
+
+.container .bubble p {
+  white-space: pre-wrap;
 }
 
 .container .bubble p {
