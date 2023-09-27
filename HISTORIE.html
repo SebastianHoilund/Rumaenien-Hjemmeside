@@ -16,10 +16,11 @@
     <script src="https://kit.fontawesome.com/5b50521b88.js" crossorigin="anonymous"></script>
 
     <title>Visit Bucharest</title>
-    
   </head>
 
 <style>
+
+
 *,
 *::before,
 *::after {
@@ -40,13 +41,13 @@ a {
 }
 
 body {
-  font: normal 16px/1.5 "Helvetica Neue", sans-serif;
-  background: #456990;
-  color: #fff;
+  margin-bottom: 50px;
 }
 
+/* .section SECTION
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+
 .section {
-  background: #f45b69;
   padding: 50px 0;
 }
 
@@ -57,24 +58,73 @@ body {
   text-align: center;
 }
 
-.section h1 {
-  font-size: 2.5rem;
-}
 
-.section h2 {
-  font-size: 1.3rem;
-}
+/* TIMELINE
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
 
 .timeline {
+  position: relative;
   white-space: nowrap;
-  overflow-x: hidden;
+  padding: 0 10px;
+  margin: 10px;
+  display: grid;
+  grid-template-columns: 300px auto;
+  grid-gap: 20px;
+
+  background: #302b2c;
+  opacity: 0.9;
+}
+
+.timeline::before,
+.timeline::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 30px;
+  width: 100px;
+  z-index: 2;
+}
+
+
+.timeline .info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 20px 40px;
+  white-space: normal;
+  border-radius: 10px;
+  background: #302b2c;
+  opacity: 0.8;
+}
+
+.timeline .info img {
+  margin-bottom: 20px;
+}
+
+.timeline .info p {
+  margin-top: 10px;
+  color: var(--primary);
+}
+
+.info h2 {
+    color: var(--primary);
+}
+
+.timeline .info a {
+  text-decoration: none;
+}
+
+.timeline ol::-webkit-scrollbar {
+  height: 12px;
 }
 
 .timeline ol {
   font-size: 0;
-  width: 100vw;
   padding: 250px 0;
   transition: all 1s;
+  overflow-x: scroll;
+  /* scroll-snap-type: x mandatory; */
+  scrollbar-color: var(--secondary) var(--primary);
 }
 
 .timeline ol li {
@@ -82,29 +132,21 @@ body {
   display: inline-block;
   list-style-type: none;
   width: 160px;
-  height: 3px;
-  background: #fff;
+  height: 5px;
+  background: var(--primary);
 }
 
-.timeline ol li:last-child {
-  width: 280px;
-}
-
-.timeline ol li:not(:first-child) {
-  margin-left: 14px;
-}
 
 .timeline ol li:not(:last-child)::after {
   content: "";
   position: absolute;
-  top: 50%;
   left: calc(100% + 1px);
   bottom: 0;
-  width: 12px;
-  height: 12px;
+  width: 16px;
+  height: 16px;
   transform: translateY(-50%);
   border-radius: 50%;
-  background: #f45b69;
+  z-index: 1;
 }
 
 .timeline ol li div {
@@ -114,9 +156,23 @@ body {
   padding: 15px;
   font-size: 1rem;
   white-space: normal;
-  color: black;
-  background: white;
+  border-radius: 0 10px 10px 10px;
 }
+
+.timeline ol li:nth-child(3n+0) div {
+  background: var(--accent);
+  opacity: 1;
+}
+    .timeline ol li:nth-child(3n+1) div {
+        background: var(--secondary);
+        opacity: 1;
+    }
+
+.timeline ol li:nth-child(3n+2) div {
+  background: var(--romania-red);
+  opacity: 1;
+}
+
 
 .timeline ol li div::before {
   content: "";
@@ -131,12 +187,12 @@ body {
 .timeline ol li:nth-child(odd) div {
   top: -16px;
   transform: translateY(-100%);
+  border-radius: 10px 10px 10px 0;
 }
 
 .timeline ol li:nth-child(odd) div::before {
   top: 100%;
   border-width: 8px 8px 0 0;
-  border-color: white transparent transparent transparent;
 }
 
 .timeline ol li:nth-child(even) div {
@@ -146,109 +202,41 @@ body {
 .timeline ol li:nth-child(even) div::before {
   top: -8px;
   border-width: 8px 0 0 8px;
-  border-color: transparent transparent transparent white;
 }
 
 .timeline time {
   display: block;
-  font-size: 1.2rem;
+  font-size: 1.4rem;
   font-weight: bold;
   margin-bottom: 8px;
 }
 
-.timeline .arrows {
-  display: flex;
-  justify-content: center;
-  margin-bottom: 20px;
-}
-
-.timeline .arrows .arrow__prev {
-  margin-right: 20px;
-}
-
-.timeline .disabled {
-  opacity: 0.5;
-}
-
-.timeline .arrows img {
-  width: 45px;
-  height: 45px;
-}
-
-@media screen and (max-width: 599px) {
-  .timeline ol,
-  .timeline ol li {
-    width: auto;
-  }
-
-  .timeline ol {
-    padding: 0;
-    transform: none !important;
-  }
-
-  .timeline ol li {
+/* GENERAL MEDIA QUERIES
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+@media screen and (max-width: 800px) {
+  .timeline {
     display: block;
-    height: auto;
-    background: transparent;
   }
 
-  .timeline ol li:first-child {
-    margin-top: 25px;
+  .timeline::before,
+  .timeline::after {
+    width: 50px;
   }
 
-  .timeline ol li:not(:first-child) {
-    margin-left: auto;
+  .timeline::before {
+    left: 0;
   }
 
-  .timeline ol li div {
-    position: static;
-    width: 94%;
-    height: auto !important;
-    margin: 0 auto 25px;
-  }
-
-  .timeline ol li:nth-child(odd) div {
-    transform: none;
-  }
-
-  .timeline ol li:nth-child(odd) div::before,
-  .timeline ol li:nth-child(even) div::before {
-    left: 50%;
-    top: 100%;
-    transform: translateX(-50%);
-    border: none;
-    border-left: 1px solid white;
-    height: 25px;
-  }
-
-  .timeline ol li:last-child,
-  .timeline ol li:nth-last-child(2) div::before,
-  .timeline ol li:not(:last-child)::after,
-  .timeline .arrows {
+  .timeline .info {
     display: none;
   }
 }
 
-.page-footer {
-  position: fixed;
-  right: 0;
-  bottom: 20px;
-  display: flex;
-  align-items: center;
-  padding: 5px;
-  color: black;
-  background: rgba(255, 255, 255, 0.65);
-}
-
-.page-footer a {
-  display: flex;
-  margin-left: 4px;
-}
 
 </style>
 
 
-  <body>
+  <body background="HISTORIE/background.jpg">
     <div class="main_wrapper">
       <nav class="navbar">
         <div class="navbar-logo"><a href="index.html"><h1>Visit Bucharest</h1></a></div>
@@ -270,70 +258,64 @@ body {
 <!-- BEGYND AT ÆNDRE HERFRA! IKKE FØR! -->
 
 
+<!--- græd -->
+<br/>
+<br/>
+<br/>
+<br/>
 
 <section class="timeline">
-    <ol>
-        <li>
-            <div>
-                <time>1459</time> Bucharest, the capital city of Romania, was officially founded in 1459 by Vlad III, also known as Vlad the Impaler or Vlad Dracula. The city's establishment was a strategic move, situated on the banks of the Dambovita River and positioned to serve as a fortress and trading hub. Over the centuries, Bucharest grew in importance, becoming the political, economic, and cultural center of Romania.
-            </div>
-        </li>
-        <li>
-            <div>
-                <time>1595</time>In 1595, Bucharest experienced a devastating fire that led to significant destruction within the city. This event resulted in the burning of many buildings and structures, and it was a challenging period for the city's residents. Fires in historical cities were particularly destructive due to the lack of advanced firefighting techniques. Bucharest, like many other cities of its time, had to rebuild and recover from the aftermath of this destructive fire.
-            </div>
-        </li>
-        <li>
-            <div>
-                <time>1698</time>In 1698, Bucharest became the capital of Wallachia, one of the three principalities that later formed modern-day Romania. This change in status marked a significant moment in Bucharest's history, as it became the political and administrative center of the region. Bucharest's role as a capital city would continue to evolve, ultimately leading to its status as the capital of the unified Romania in the 19th century.
-            </div>
-        </li>
-        <li>
-            <div>
-                <time>1806-1812</time>Bucharest, like many European cities, has experienced conflicts involving Russia at various points in its history. During the Russo-Turkish War of 1806-1812, Bucharest was occupied by Russian forces. This occupation played a role in shaping the city's development and its relationship with the major powers of the time.
-            </div>
-        </li>
-        <li>
-            <div>
-                <time>1812</time> In 1812, Bucharest faced a devastating outbreak of plague that claimed the lives of approximately one-quarter of its population. Plague outbreaks were notorious for their high mortality rates and the profound impact they had on affected communities. The plague in 1812 would have had significant social and demographic consequences for Bucharest, with long-term effects on the city's population and society.
-            </div>
-        </li>
-        <li>
-            <div>
-                <time>1847</time> This catastrophic event led to the destruction of a substantial portion of the city's structures and had a profound impact on its architecture and urban planning in the years that followed.
-            </div>
-        </li>
-        <li>
-            <div>
-                <time>1916</time> During World War I, Bucharest, as the capital of Romania, faced occupation by German forces in 1916. This occupation had significant consequences for the city and the nation, including changes in administration and governance. It was a turbulent period in Bucharest's history, as it navigated the challenges of war.
-            </div>
-        </li>
-        <li>
-            <div>
-                <time>1967</time> Aenean condimentum odio a bibendum rhoncus. Ut mauris felis, volutpat eget porta faucibus, euismod quis ante.
-            </div>
-        </li>
-        <li>
-            <div>
-                <time>1977</time> Vestibulum porttitor lorem sed pharetra dignissim. Nulla maximus, dui a tristique iaculis, quam dolor convallis enim, non dignissim ligula ipsum a turpis.
-            </div>
-        </li>
-        <li>
-            <div>
-                <time>1944-1945</time> In 1944-1945, Bucharest experienced extensive bombings during World War II as part of the broader conflict in Eastern Europe. These bombings resulted in widespread destruction and loss of life in the city. The end of World War II marked a turning point for Bucharest and Romania, with the bombings playing a significant role in shaping the post-war era and reconstruction efforts.
-            </div>
-        </li>
-    </ol>
+  <div class="info">
+    <img width="250" src="HISTORIE/flag.png" alt="" />
+    <h2>Bukarests historie</h2>
+    <p>Her kan du læse en tidslinje over historien om Rumæniens hovedstad, Bukarest</p>
+  </div>
 
-    <div class="arrows">
-        <button class="arrow arrow__prev disabled" disabled>
-            <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/162656/arrow_prev.svg" alt="prev timeline arrow">
-        </button>
-        <button class="arrow arrow__next">
-            <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/162656/arrow_next.svg" alt="next timeline arrow">
-        </button>
-    </div>
+  <ol>
+    <li>
+      <div>
+          <time>1459</time> <p>Bukarest, Rumæniens hovedstad, blev officielt grundlagt i 1459 af Vlad III, også kendt som Vlad Impaler eller Vlad Dracula. </p>
+      </div>
+    </li>
+    <li>
+      <div>
+          <time>1595</time> <p>I 1595 oplevede Bukarest en ødelæggende brand, der førte til betydelig ødelæggelse i byen. Begivenheden resulterede i, at mange bygninger og strukturer brændte ned, og det var en udfordrende periode for byens beboere. </p>
+      </div>
+    </li>
+    <li>
+      <div>
+          <time>1698</time> <p>I 1698 blev Bukarest hovedstaden i Valakiet, en af de tre fyrstedømmer, der senere dannede det moderne Rumænien. Denne ændring i status markerede et betydeligt øjeblik i Bukarests historie, da byen blev politisk og administrativt centrum i regionen. </p>
+      </div>
+    </li>
+    <li>
+      <div>
+          <time>1806-1812</time> <p>Bukarest, ligesom mange europæiske byer, har oplevet konflikter med Rusland på forskellige tidspunkter i sin historie. Under den russisk-tyrkiske krig fra 1806 til 1812 blev Bukarest besat af russiske styrker. </p>
+      </div>
+    </li>
+    <li>
+      <div>
+          <time>1812</time> <p>I 1812 stod Bukarest over for et ødelæggende udbrud af pest, der krævede livet af cirka en fjerdedel af dens befolkning. Pestudbrud var berygtede for deres høje dødelighed og den dybtgående indvirkning, de havde på samfundet. </p>
+      </div>
+    </li>
+    <li>
+      <div>
+          <time>1847</time> <p>Henvisningen til en stor brand, der førte til tabet af en tredjedel af byens bygninger, antyder sandsynligvis den store brand i Bukarest i 1847.</p>
+      </div>
+    </li>
+    <li>
+      <div>
+          <time>1916</time> <p>Under Første Verdenskrig blev Bukarest som hovedstad i Rumænien besat af tyske styrker i 1916. Denne besættelse havde betydelige konsekvenser for byen og nationen, inklusive ændringer i administration og styring. </p>
+      </div>
+    </li>
+    <li>
+      <div>
+          <time>1944-1945</time> <p> i 1944-1945 oplevede Bukarest omfattende bombardementer under Anden Verdenskrig som en del af den bredere konflikt i Østeuropa. Disse bombardementer resulterede i omfattende ødelæggelse og tab af liv i byen. </p>
+      </div>
+    </li>
+  </ol>
+
 </section>
+
 
 <!-- I BEHØVER IKKE AT ÆNDRE NOGET I FOOTEREN, MEN I KAN GODT HVIS DET ER -->
       <footer class="footer">
